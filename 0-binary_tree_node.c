@@ -9,17 +9,25 @@
  *
  */
 
-binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
-{
-	binary_tree_t *new;
+typedef struct binary_tree_s binary_tree_t;
 
-	new = malloc(sizeof(binary_tree_t));
-	if (new == NULL)
-		return (NULL);
-	new->n = value;
-	new->parent = parent;
-	new->left = NULL;
-	new->right = NULL;
+struct binary_tree_s {
+    int value;
+    binary_tree_t *parent;
+    binary_tree_t *left;
+    binary_tree_t *right;
+};
 
-	return (new);
+binary_tree_t *binary_tree_node(binary_tree_t *parent, int value) {
+    binary_tree_t *node = malloc(sizeof(binary_tree_t));
+    if (!node) {
+        return NULL;
+    }
+
+    node->value = value;
+    node->parent = parent;
+    node->left = NULL;
+    node->right = NULL;
+
+    return node;
 }

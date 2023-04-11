@@ -1,33 +1,22 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_node - function that creates a binary tree node
- * @parent: a pointer to the parent node of the node to create
- * @value: the value to put in the new node
- *
- * Return: a pointer to the new node, or NULL on failure
- *
+ * binary_tree_node - Creates a binary tree node
+ * @parent: Pointer to parent node of the node
+ * @value: Value of the node to be created
+ * Return: Pointer to new node or NULL if failed
  */
 
-typedef struct binary_tree_s binary_tree_t;
+binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
+{
+	binary_tree_t *new_node = malloc(sizeof(binary_tree_t));
+		if (!new_node)
+			return (NULL);
+		new_node->parent = parent;
+		new_node->left = NULL;
+		new_node->right = NULL;
+		new_node->n = value;
 
-struct binary_tree_s {
-    int value;
-    binary_tree_t *parent;
-    binary_tree_t *left;
-    binary_tree_t *right;
-};
+		return (new_node);
 
-binary_tree_t *binary_tree_node(binary_tree_t *parent, int value) {
-    binary_tree_t *node = malloc(sizeof(binary_tree_t));
-    if (!node) {
-        return NULL;
-    }
-
-    node->value = value;
-    node->parent = parent;
-    node->left = NULL;
-    node->right = NULL;
-
-    return node;
 }
